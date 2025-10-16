@@ -14,12 +14,15 @@ html, body {
 }
 
 /* Mantener tamaño mobile dentro del navegador */
+/* iPhone 13 Pro / 16 Pro dimensions: 390x844px */
 .container {
   position: relative;
-  width: 360px;
-  height: 640px;
+  width: 390px;
+  height: 844px;
   background-color: black;
   overflow: hidden;
+  border-radius: 47px; /* iPhone corner radius */
+  box-shadow: 0 0 20px rgba(0, 0, 0, 0.5);
 }
 
 /* --- VIDEO --- */
@@ -99,10 +102,9 @@ html, body {
   to { opacity: 1; }
 }
 
-/* Boton play
+/* Boton play */
 .boton-play {
     position: relative;
     width: 30%;
     height: 55%;
-
 }
