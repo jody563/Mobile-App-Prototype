@@ -80,7 +80,7 @@ html, body {
   }
 }
 
-/* --- SLIDER DE CARTAS HORIZONTAL --- */
+/* --- SLIDER 3D CAROUSEL --- */
 .slider {
   position: relative;
   width: 100%;
@@ -90,7 +90,8 @@ html, body {
   align-items: center;
   flex-shrink: 0;
   overflow: visible;
-  perspective: 1000px;
+  perspective: 1200px;
+  transform-style: preserve-3d;
 }
 
 .card {
@@ -100,9 +101,9 @@ html, body {
   height: 100%;
   border-radius: 15px;
   overflow: visible;
-  transition: all 0.8s cubic-bezier(0.4, 0, 0.2, 1);
-  opacity: 0.5;
-  transform: scale(0.85);
+  transition: all 1s cubic-bezier(0.4, 0, 0.2, 1);
+  transform-style: preserve-3d;
+  backface-visibility: visible;
 }
 
 .card img {
@@ -115,7 +116,7 @@ html, body {
 /* Carta del centro (activa) */
 .card.center {
   opacity: 1;
-  transform: translateX(0) scale(1);
+  transform: translateZ(0) rotateY(0deg) scale(1);
   z-index: 3;
   filter: brightness(1);
 }
@@ -123,32 +124,32 @@ html, body {
 /* Carta a la izquierda */
 .card.left {
   opacity: 0.8;
-  transform: translateX(-75%) scale(0.85);
+  transform: translateX(-60%) translateZ(-200px) rotateY(35deg) scale(0.85);
   z-index: 2;
-  filter: brightness(0.4);
+  filter: brightness(0.35);
 }
 
 /* Carta a la derecha */
 .card.right {
   opacity: 0.8;
-  transform: translateX(75%) scale(0.85);
+  transform: translateX(60%) translateZ(-200px) rotateY(-35deg) scale(0.85);
   z-index: 2;
-  filter: brightness(0.4);
+  filter: brightness(0.35);
 }
 
 /* Cartas fuera de vista */
 .card.far-left {
-  opacity: 0.6;
-  transform: translateX(-150%) scale(0.7);
+  opacity: 0;
+  transform: translateX(-120%) translateZ(-400px) rotateY(50deg) scale(0.7);
   z-index: 1;
-  filter: brightness(0.3);
+  filter: brightness(0.2);
 }
 
 .card.far-right {
-  opacity: 0.6;
-  transform: translateX(150%) scale(0.7);
+  opacity: 0;
+  transform: translateX(120%) translateZ(-400px) rotateY(-50deg) scale(0.7);
   z-index: 1;
-  filter: blur(5px) brightness(0.3);
+  filter: brightness(0.2);
 }
 
 /* Fade suave al mostrar las cartas */
@@ -251,10 +252,27 @@ html, body {
 
   .slider {
     height: 220px;
+    perspective: 800px;
   }
 
   .card {
     max-width: 140px;
+  }
+
+  .card.left {
+    transform: translateX(-50%) translateZ(-150px) rotateY(30deg) scale(0.8);
+  }
+
+  .card.right {
+    transform: translateX(50%) translateZ(-150px) rotateY(-30deg) scale(0.8);
+  }
+
+  .card.far-left {
+    transform: translateX(-100%) translateZ(-300px) rotateY(45deg) scale(0.65);
+  }
+
+  .card.far-right {
+    transform: translateX(100%) translateZ(-300px) rotateY(-45deg) scale(0.65);
   }
 
   .boton-play {
