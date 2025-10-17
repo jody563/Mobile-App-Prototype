@@ -11,30 +11,154 @@ html, body {
   display: flex;
   justify-content: center;
   align-items: center;
+  overflow: hidden;
 }
 
-/* Keep mobile size within browser */
-/* iPhone 13 Pro / 16 Pro dimensions: 390x844px */
+/* Responsive mobile container */
 .container {
   position: relative;
   width: 390px;
   height: 844px;
+  max-width: 100vw;
+  max-height: 100vh;
   background-color: black;
   overflow: hidden;
-  border-radius: 47px; /* iPhone corner radius */
+  border-radius: 47px;
   box-shadow: 0 0 20px rgba(0, 0, 0, 0.5);
+}
+
+/* Mobile devices - full screen */
+@media screen and (max-width: 430px) and (orientation: portrait) {
+  html, body {
+    overflow: hidden;
+  }
+
+  .container {
+    width: 100vw;
+    height: 100vh;
+    border-radius: 0;
+    box-shadow: none;
+  }
+
+  #main-video {
+    width: 100%;
+    height: 100%;
+    min-width: 100%;
+    min-height: 100%;
+    object-fit: cover;
+    border-radius: 0;
+  }
+}
+
+/* Small mobile devices (iPhone SE 375x667, etc.) */
+@media screen and (max-width: 375px) and (orientation: portrait) {
+  .container .image-section {
+    padding: 10px 0 20px 0;
+    justify-content: space-evenly;
+  }
+
+  .logo-container {
+    margin-bottom: 5px;
+  }
+
+  .logo-bounce {
+    width: 170px !important;
+  }
+
+  @keyframes bounce {
+    0%, 20%, 50%, 80%, 100% {
+      transform: translateY(0);
+    }
+    40% {
+      transform: translateY(-15px);
+    }
+    60% {
+      transform: translateY(-8px);
+    }
+  }
+
+  .slider {
+    height: 260px;
+    margin: 5px 0;
+  }
+
+  .card {
+    max-width: 140px;
+    width: 52%;
+  }
+
+  .boton-play {
+    width: 240px !important;
+    height: 65px !important;
+    margin-top: 5px;
+  }
+
+  @keyframes buttonPulse {
+    0%, 100% {
+      transform: scale(1);
+    }
+    50% {
+      transform: scale(1.08);
+    }
+  }
+
+  .swipe-hint {
+    width: 65px;
+    height: 65px;
+    bottom: 10%;
+  }
+
+  @keyframes swipeHint {
+    0% {
+      opacity: 0;
+      transform: translateX(0);
+    }
+    5% {
+      opacity: 1;
+    }
+    25% {
+      opacity: 1;
+      transform: translateX(-80px);
+    }
+    30% {
+      opacity: 1;
+      transform: translateX(-80px);
+    }
+    50% {
+      opacity: 1;
+      transform: translateX(0);
+    }
+    55% {
+      opacity: 0;
+      transform: translateX(0);
+    }
+    100% {
+      opacity: 0;
+      transform: translateX(0);
+    }
+  }
+}
+
+/* Medium mobile devices (iPhone 13 Pro, etc. 376-430px) */
+@media screen and (min-width: 376px) and (max-width: 430px) and (orientation: portrait) {
+  .logo-bounce {
+    width: 220px;
+  }
+
+  .boton-play {
+    width: 280px;
+    height: 75px;
+  }
 }
 
 /* --- VIDEO --- */
 #main-video {
   position: absolute;
-  top: 50%;
-  left: 50%;
+  top: 0;
+  left: 0;
   width: 100%;
-  height: auto;
-  min-height: 100%;
+  height: 100%;
   object-fit: cover;
-  transform: translate(-50%, -50%);
   z-index: 1;
 }
 
@@ -101,7 +225,7 @@ html, body {
   height: 100%;
   border-radius: 15px;
   overflow: visible;
-  transition: all 1s cubic-bezier(0.4, 0, 0.2, 1);
+  transition: all 1.2s cubic-bezier(0.25, 0.46, 0.45, 0.94);
   transform-style: preserve-3d;
   backface-visibility: visible;
 }
@@ -228,14 +352,14 @@ html, body {
   .image-section {
     width: 100%;
     height: 100%;
-    padding: 20px 0 20px 0;
+    padding: 15px 0 15px 0;
     background: url("img/img_background.jpg") center/cover no-repeat;
     background-size: cover;
     background-position: center center;
   }
 
   .logo-bounce {
-    width: 150px;
+    width: 100px;
   }
 
   @keyframes bounce {
@@ -243,41 +367,41 @@ html, body {
       transform: translateY(0);
     }
     40% {
-      transform: translateY(-10px);
+      transform: translateY(-8px);
     }
     60% {
-      transform: translateY(-5px);
+      transform: translateY(-4px);
     }
   }
 
   .slider {
-    height: 220px;
-    perspective: 800px;
+    height: 180px;
+    perspective: 700px;
   }
 
   .card {
-    max-width: 140px;
+    max-width: 110px;
   }
 
   .card.left {
-    transform: translateX(-50%) translateZ(-150px) rotateY(30deg) scale(0.8);
+    transform: translateX(-50%) translateZ(-130px) rotateY(28deg) scale(0.78);
   }
 
   .card.right {
-    transform: translateX(50%) translateZ(-150px) rotateY(-30deg) scale(0.8);
+    transform: translateX(50%) translateZ(-130px) rotateY(-28deg) scale(0.78);
   }
 
   .card.far-left {
-    transform: translateX(-100%) translateZ(-300px) rotateY(45deg) scale(0.65);
+    transform: translateX(-95%) translateZ(-260px) rotateY(42deg) scale(0.62);
   }
 
   .card.far-right {
-    transform: translateX(100%) translateZ(-300px) rotateY(-45deg) scale(0.65);
+    transform: translateX(95%) translateZ(-260px) rotateY(-42deg) scale(0.62);
   }
 
   .boton-play {
-    width: 220px;
-    height: 60px;
+    width: 180px;
+    height: 50px;
   }
 
   @keyframes buttonPulse {
