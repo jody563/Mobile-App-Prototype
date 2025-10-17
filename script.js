@@ -1,7 +1,21 @@
 const video = document.getElementById("main-video");
 const imageSection = document.getElementById("image-section");
 const cards = document.querySelectorAll(".card");
+const soundToggleBtn = document.getElementById("sound-toggle-btn");
+const mutedIcon = document.getElementById("muted-icon");
+const unmutedIcon = document.getElementById("unmuted-icon");
 let current = 0;
+
+// Update button icon based on mute state
+function updateSoundIcon() {
+  if (video.muted) {
+    mutedIcon.style.display = "block";
+    unmutedIcon.style.display = "none";
+  } else {
+    mutedIcon.style.display = "none";
+    unmutedIcon.style.display = "block";
+  }
+}
 
 // Try to play with sound
 window.addEventListener("load", () => {
@@ -11,13 +25,30 @@ window.addEventListener("load", () => {
     playPromise.catch(() => {
       video.muted = true;
       video.play();
+      updateSoundIcon();
     });
   }
+  
+  // Check mute state after a short delay
+  setTimeout(() => {
+    updateSoundIcon();
+  }, 100);
 });
+
+// Sound toggle button click handler
+if (soundToggleBtn) {
+  soundToggleBtn.addEventListener("click", () => {
+    video.muted = !video.muted;
+    updateSoundIcon();
+  });
+}
 
 // Show image + animation when video ends
 video.addEventListener("ended", () => {
   video.style.display = "none";
+  if (soundToggleBtn) {
+    soundToggleBtn.style.display = "none";
+  }
   imageSection.style.display = "flex";
   imageSection.classList.add("show");
   startSlider();
