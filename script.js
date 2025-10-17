@@ -3,7 +3,7 @@ const imageSection = document.getElementById("image-section");
 const cards = document.querySelectorAll(".card");
 let current = 0;
 
-// Intentar reproducir con sonido
+// Try to play with sound
 window.addEventListener("load", () => {
   video.muted = false;
   const playPromise = video.play();
@@ -15,7 +15,7 @@ window.addEventListener("load", () => {
   }
 });
 
-// Mostrar imagen + animación al finalizar el video
+// Show image + animation when video ends
 video.addEventListener("ended", () => {
   video.style.display = "none";
   imageSection.style.display = "flex";
@@ -23,29 +23,29 @@ video.addEventListener("ended", () => {
   startSlider();
 });
 
-// --- SLIDER CARRUSEL HORIZONTAL ---
+// --- HORIZONTAL CAROUSEL SLIDER ---
 function startSlider() {
   let currentIndex = 0;
   const totalCards = cards.length;
 
   function updateCards() {
     cards.forEach((card, index) => {
-      // Remover todas las clases de posición
+      // Remove all position classes
       card.classList.remove("center", "left", "right", "far-left", "far-right");
 
-      // Calcular la diferencia de posición
+      // Calculate position difference
       let diff = index - currentIndex;
 
-      // Normalizar la diferencia para loop circular
-      // Para 3 cartas: si diff es 2, debería ser -1 (más cerca por la izquierda)
-      // Para 3 cartas: si diff es -2, debería ser 1 (más cerca por la derecha)
+      // Normalize the difference for circular loop
+      // For 3 cards: if diff is 2, it should be -1 (closer on the left)
+      // For 3 cards: if diff is -2, it should be 1 (closer on the right)
       if (diff > totalCards / 2) {
         diff -= totalCards;
       } else if (diff < -totalCards / 2) {
         diff += totalCards;
       }
 
-      // Asignar la clase según la posición
+      // Assign class based on position
       if (diff === 0) {
         card.classList.add("center");
       } else if (diff === -1) {
@@ -60,10 +60,10 @@ function startSlider() {
     });
   }
 
-  // Inicializar posiciones
+  // Initialize positions
   updateCards();
 
-  // Cambiar de carta cada 3 segundos
+  // Change card every 3 seconds
   setInterval(() => {
     currentIndex = (currentIndex + 1) % totalCards;
     updateCards();

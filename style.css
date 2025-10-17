@@ -13,7 +13,7 @@ html, body {
   align-items: center;
 }
 
-/* Mantener tamaño mobile dentro del navegador */
+/* Keep mobile size within browser */
 /* iPhone 13 Pro / 16 Pro dimensions: 390x844px */
 .container {
   position: relative;
@@ -38,7 +38,7 @@ html, body {
   z-index: 1;
 }
 
-/* --- SECCIÓN FINAL --- */
+/* --- FINAL SECTION --- */
 .image-section {
   position: absolute;
   top: 0;
@@ -54,7 +54,6 @@ html, body {
   z-index: 2;
 }
 
-/* --- LOGO CON BOUNCE --- */
 .logo-container {
   width: 100%;
   display: flex;
@@ -62,6 +61,7 @@ html, body {
   flex-shrink: 0;
 }
 
+/* --- LOGO WITH BOUNCE --- */
 .logo-bounce {
   width: 260px;
   height: auto;
@@ -80,7 +80,7 @@ html, body {
   }
 }
 
-/* --- SLIDER 3D CAROUSEL --- */
+/* --- 3D CAROUSEL SLIDER --- */
 .slider {
   position: relative;
   width: 100%;
@@ -113,7 +113,7 @@ html, body {
   border-radius: 15px;
 }
 
-/* Carta del centro (activa) */
+/* Center card (active) */
 .card.center {
   opacity: 1;
   transform: translateZ(0) rotateY(0deg) scale(1);
@@ -121,7 +121,7 @@ html, body {
   filter: brightness(1);
 }
 
-/* Carta a la izquierda */
+/* Card on the left */
 .card.left {
   opacity: 0.8;
   transform: translateX(-60%) translateZ(-200px) rotateY(35deg) scale(0.85);
@@ -129,7 +129,7 @@ html, body {
   filter: brightness(0.35);
 }
 
-/* Carta a la derecha */
+/* Card on the right */
 .card.right {
   opacity: 0.8;
   transform: translateX(60%) translateZ(-200px) rotateY(-35deg) scale(0.85);
@@ -137,7 +137,7 @@ html, body {
   filter: brightness(0.35);
 }
 
-/* Cartas fuera de vista */
+/* Cards out of view */
 .card.far-left {
   opacity: 0;
   transform: translateX(-120%) translateZ(-400px) rotateY(50deg) scale(0.7);
@@ -152,7 +152,7 @@ html, body {
   filter: brightness(0.2);
 }
 
-/* Fade suave al mostrar las cartas */
+/* Smooth fade when showing cards */
 .image-section.show {
   animation: fadeIn 1s ease forwards;
 }
@@ -162,7 +162,7 @@ html, body {
   to { opacity: 1; }
 }
 
-/* Boton play */
+/* Play button */
 .boton-play {
     width: 320px;
     height: 85px;
@@ -201,21 +201,21 @@ html, body {
     transform: scale(0.95);
 }
 
-/* --- LANDSCAPE MODE (solo en móviles) --- */
+/* --- LANDSCAPE MODE (mobile only) --- */
 @media screen and (orientation: landscape) and (max-height: 500px) {
   html, body {
     overflow: hidden;
   }
 
   .container {
-    /* Mantiene proporción 390:844 en landscape */
+    /* Maintains 390:844 proportion in landscape */
     width: calc(100vh * 390 / 844);
     height: 100vh;
     max-width: 100vw;
     border-radius: 0;
   }
 
-  /* Video en landscape con bordes negros */
+  /* Video in landscape with black borders */
   #main-video {
     width: 100%;
     height: 100%;
